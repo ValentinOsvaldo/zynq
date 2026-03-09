@@ -2,10 +2,10 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { createRouter, createMemoryHistory } from 'vue-router';
 import { h, defineComponent } from 'vue';
-import { useSynq } from './use-synq';
-import { s } from '@synq/core';
+import { useZynq } from './use-zynq';
+import { s } from '@zynq/core';
 
-describe('useSynq', () => {
+describe('useZynq', () => {
   let router: ReturnType<typeof createRouter>;
 
   beforeEach(async () => {
@@ -22,7 +22,7 @@ describe('useSynq', () => {
 
     const TestComp = defineComponent({
       setup() {
-        const { state: s } = useSynq(schema);
+        const { state: s } = useZynq(schema);
         state = s;
         return () => h('div', {}, []);
       },
@@ -49,7 +49,7 @@ describe('useSynq', () => {
 
     const TestComp = defineComponent({
       setup() {
-        const { state: s } = useSynq(schema);
+        const { state: s } = useZynq(schema);
         state = s;
         return () => h('div', {}, []);
       },
@@ -80,7 +80,7 @@ describe('useSynq', () => {
 
     const TestComp = defineComponent({
       setup() {
-        const { state: s } = useSynq(schema);
+        const { state: s } = useZynq(schema);
         state = s;
         return () => h('div', {}, []);
       },

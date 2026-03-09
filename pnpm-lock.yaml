@@ -14,10 +14,10 @@ importers:
 
   apps/vue-playground:
     dependencies:
-      '@synq/core':
+      '@zynq/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@synq/vue':
+      '@zynq/vue':
         specifier: workspace:*
         version: link:../../packages/vue
       vue:
@@ -96,7 +96,7 @@ importers:
 
   packages/vue:
     dependencies:
-      '@synq/core':
+      '@zynq/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:

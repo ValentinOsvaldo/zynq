@@ -10,7 +10,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
-      '@synq/core': resolve(__dirname, '../core/src/index.ts'),
+      '@zynq/core': resolve(__dirname, '../core/src/index.ts'),
     },
   },
 });

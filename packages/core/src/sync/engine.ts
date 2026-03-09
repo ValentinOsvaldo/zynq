@@ -7,7 +7,7 @@ export type InferState<S extends Schema> = {
   [K in keyof S]: S[K] extends Codec<infer T> ? T : never;
 };
 
-export class SynqEngine<S extends Schema> {
+export class ZynqEngine<S extends Schema> {
   constructor(
     private readonly schema: S,
     private readonly router: Router,

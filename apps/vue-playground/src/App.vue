@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { s, useSynq } from '@synq/vue'
+import { s, useZynq } from '@zynq/vue'
 
 const filterSchema = {
   search: s.string(''),
@@ -8,7 +8,7 @@ const filterSchema = {
   isAdmin: s.boolean(false),
 }
 
-const { state } = useSynq(filterSchema)
+const { state } = useZynq(filterSchema)
 
 const addTag = () => state.tags.push('new-tag')
 const nextPage = () => state.page++
@@ -16,7 +16,7 @@ const nextPage = () => state.page++
 
 <template>
   <div style="padding: 2rem; font-family: sans-serif">
-    <h1>🧪 Synq Playground</h1>
+    <h1>🧪 Zynq Playground</h1>
 
     <section>
       <label>Buscar: </label>

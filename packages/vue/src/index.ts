@@ -1,4 +1,4 @@
-export { useSynq } from './use-synq';
+export { useZynq } from './use-zynq';
 export { VueRouterAdapter } from './adapter';
-export { s } from '@synq/core';
-export type { Schema, InferState } from '@synq/core';
+export { s } from '@zynq/core';
+export type { Schema, InferState } from '@zynq/core';

@@ -11,7 +11,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@synq/core": ["../core/src/index.ts"]
+      "@zynq/core": ["../core/src/index.ts"]
     }
   },
   "include": ["src"]

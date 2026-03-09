@@ -17,8 +17,8 @@
   "dependencies": {
     "vue": "^3.5.29",
     "vue-router": "^5.0.3",
-    "@synq/vue": "workspace:*",
-    "@synq/core": "workspace:*"
+    "@zynq/vue": "workspace:*",
+    "@zynq/core": "workspace:*"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",

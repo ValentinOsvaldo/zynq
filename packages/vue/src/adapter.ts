@@ -1,7 +1,7 @@
 import { Router, RouteLocationNormalizedLoaded } from 'vue-router';
-import type { Router as SynqRouter } from '@synq/core';
+import type { Router as ZynqRouter } from '@zynq/core';
 
-export class VueRouterAdapter implements SynqRouter {
+export class VueRouterAdapter implements ZynqRouter {
   constructor(
     private router: Router,
     private route: RouteLocationNormalizedLoaded,

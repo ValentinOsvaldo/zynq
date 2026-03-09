@@ -1,14 +1,14 @@
 import { reactive, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { SynqEngine, Schema, InferState } from '@synq/core';
+import { ZynqEngine, Schema, InferState } from '@zynq/core';
 import { VueRouterAdapter } from './adapter';
 
-export function useSynq<S extends Schema>(schema: S) {
+export function useZynq<S extends Schema>(schema: S) {
   const router = useRouter();
   const route = useRoute();
 
   const adapter = new VueRouterAdapter(router, route);
-  const engine = new SynqEngine(schema, adapter);
+  const engine = new ZynqEngine(schema, adapter);
 
   const state = reactive(engine.parse()) as InferState<S>;
 

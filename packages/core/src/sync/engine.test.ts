@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { SynqEngine } from './engine';
+import { ZynqEngine } from './engine';
 import { s } from '../schema/builder';
 import type { Router } from './router';
 
@@ -16,14 +16,14 @@ function createMockRouter(initial: Record<string, string | null> = {}): Router {
   };
 }
 
-describe('SynqEngine', () => {
+describe('ZynqEngine', () => {
   it('parse(): reads params and decodes with schema', () => {
     const router = createMockRouter({ name: 'Alice', count: '42' });
     const schema = {
       name: s.string(),
       count: s.number(0),
     };
-    const engine = new SynqEngine(schema, router);
+    const engine = new ZynqEngine(schema, router);
 
     const state = engine.parse();
 
@@ -37,7 +37,7 @@ describe('SynqEngine', () => {
       name: s.string(),
       count: s.number(10),
     };
-    const engine = new SynqEngine(schema, router);
+    const engine = new ZynqEngine(schema, router);
 
     const state = engine.parse();
 
@@ -47,7 +47,7 @@ describe('SynqEngine', () => {
   it('parse(): uses first element when param is array (e.g. query multi)', () => {
     const router = createMockRouter({ tag: ['v1', 'v2'] } as any);
     const schema = { tag: s.string() };
-    const engine = new SynqEngine(schema, router);
+    const engine = new ZynqEngine(schema, router);
 
     const state = engine.parse();
 
@@ -60,7 +60,7 @@ describe('SynqEngine', () => {
       name: s.string(),
       count: s.number(0),
     };
-    const engine = new SynqEngine(schema, router);
+    const engine = new ZynqEngine(schema, router);
 
     engine.commit({ name: 'New', count: 2 });
 
@@ -76,7 +76,7 @@ describe('SynqEngine', () => {
   it('commit(): uses push when mode is push', () => {
     const router = createMockRouter({ page: '1' });
     const schema = { page: s.number(1) };
-    const engine = new SynqEngine(schema, router);
+    const engine = new ZynqEngine(schema, router);
 
     engine.commit({ page: 2 }, 'push');
 
@@ -91,7 +91,7 @@ describe('SynqEngine', () => {
       name: s.string(''),
       count: s.number(0),
     };
-    const engine = new SynqEngine(schema, router);
+    const engine = new ZynqEngine(schema, router);
 
     engine.commit({ name: '', count: 0 });
 
@@ -106,7 +106,7 @@ describe('SynqEngine', () => {
   it('commit(): merges new state with current params', () => {
     const router = createMockRouter({ a: '1', b: '2' });
     const schema = { a: s.string(), b: s.string() };
-    const engine = new SynqEngine(schema, router);
+    const engine = new ZynqEngine(schema, router);
 
     engine.commit({ b: 'updated' });
 
