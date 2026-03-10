@@ -117,4 +117,19 @@ describe('ZynqEngine', () => {
       }),
     );
   });
+
+  it('parse() and serialize() work with s.object() codec', () => {
+    const filtersJson = '{"name":"search","count":5}';
+    const router = createMockRouter({ filters: filtersJson });
+    const schema = {
+      filters: s.object({ name: s.string(''), count: s.number(0) }),
+    };
+    const engine = new ZynqEngine(schema, router);
+
+    const state = engine.parse();
+    expect(state.filters).toEqual({ name: 'search', count: 5 });
+
+    const serialized = engine.serialize(state);
+    expect(serialized.filters).toBe(filtersJson);
+  });
 });

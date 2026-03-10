@@ -65,4 +65,24 @@ describe('schema builder (s)', () => {
       expect(codec.decode('')).toEqual(['a']);
     });
   });
+
+  describe('s.object', () => {
+    it('creates ObjectCodec with shape and default from inner codecs', () => {
+      const codec = s.object({ name: s.string(''), count: s.number(0) });
+      expect(codec.decode(null)).toEqual({ name: '', count: 0 });
+      expect(codec.defaultValue).toEqual({ name: '', count: 0 });
+    });
+
+    it('encodes and decodes object as JSON', () => {
+      const codec = s.object({ name: s.string(), count: s.number(0) });
+      const value = { name: 'foo', count: 42 };
+      expect(codec.decode(codec.encode(value))).toEqual(value);
+    });
+
+    it('returns default when value is empty or invalid JSON', () => {
+      const codec = s.object({ tag: s.string('x') });
+      expect(codec.decode('')).toEqual({ tag: 'x' });
+      expect(codec.decode('not json')).toEqual({ tag: 'x' });
+    });
+  });
 });

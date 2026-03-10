@@ -60,7 +60,7 @@ Visiting `/?name=foo&count=10&active=false` will set `state` to `{ name: 'foo', 
 
 ### `useZynq(schema)`
 
-- **Parameters:** `schema` – object of keys to codecs (e.g. from `s.string()`, `s.number()`, `s.boolean()`).
+- **Parameters:** `schema` – object of keys to codecs (e.g. from `s.string()`, `s.number()`, `s.boolean()`, `s.object()`).
 - **Returns:** `{ state }` – reactive object whose keys match the schema and stay synced with the URL query.
 
 Must be called in a component that runs in a Vue Router context (so `useRouter()` and `useRoute()` are available).
@@ -69,9 +69,10 @@ Must be called in a component that runs in a Vue Router context (so `useRouter()
 
 Included in this package for convenience:
 
-- `s.string()` – string (optional in URL)
+- `s.string(default?)` – string with optional default
 - `s.number(default?)` – number with optional default
 - `s.boolean(default?)` – boolean with optional default
+- `s.object(shape)` – nested object; `shape` is a schema (same codecs). Encoded as a single JSON query param.
 
 ### `VueRouterAdapter`
 
