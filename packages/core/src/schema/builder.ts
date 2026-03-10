@@ -4,6 +4,7 @@ import {
   Codec,
   DateCodec,
   NumberCodec,
+  ObjectCodec,
   StringCodec,
 } from './codec';
 
@@ -14,6 +15,7 @@ export const s = {
   date: (defaultValue = new Date()) => new DateCodec(defaultValue),
   array: <T>(innerCodec: Codec<T>, defaultValue: T[] = []) =>
     new ArrayCodec(innerCodec, defaultValue),
+  object: <S extends Schema>(shape: S) => new ObjectCodec(shape),
 };
 
 export type AnyCodec = Codec<any>;
