@@ -10,11 +10,11 @@ Synchronize application state with the URL in Vue 3 apps using composables and V
 ## Installation
 
 ```bash
-npm install @zynq/vue @zynq/core
+npm install @zynq/vue
 # or
-pnpm add @zynq/vue @zynq/core
+pnpm add @zynq/vue
 # or
-yarn add @zynq/vue @zynq/core
+yarn add @zynq/vue
 ```
 
 Install Vue and Vue Router if you don't have them yet:
@@ -25,7 +25,7 @@ npm install vue vue-router
 
 ## Quick start
 
-1. Define a schema with `s` (from `@zynq/core`) and call `useZynq(schema)` inside a component that has access to the router (e.g. under `<RouterView>` or where `useRouter()` works).
+1. Define a schema with the `s` builders and call `useZynq(schema)` inside a component that has access to the router (e.g. under `<RouterView>` or where `useRouter()` works).
 
 2. The returned `state` is reactive and stays in sync with the URL: when the user changes the URL (or back/forward), state updates; when you change `state`, the URL updates (via `replaceState` by default).
 
@@ -67,7 +67,7 @@ Must be called in a component that runs in a Vue Router context (so `useRouter()
 
 ### Schema builders (`s`)
 
-Re-exported from `@zynq/core` for convenience:
+Included in this package for convenience:
 
 - `s.string()` – string (optional in URL)
 - `s.number(default?)` – number with optional default
