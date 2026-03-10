@@ -1,6 +1,6 @@
 {
   "name": "@zynq/vue",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Synchronize application state with the URL using Vue 3 composables and Vue Router",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
