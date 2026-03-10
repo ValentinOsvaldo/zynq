@@ -1,3 +1,5 @@
+import { InferSchema, Schema } from './builder';
+
 export abstract class Codec<T> {
   constructor(
     public readonly defaultValue: T,
@@ -64,5 +66,29 @@ export class ArrayCodec<T> extends Codec<T[]> {
   decode(value: string | null | undefined): T[] {
     if (!value) return this.defaultValue;
     return value.split(',').map((item) => this.innerCodec.decode(item));
+  }
+}
+
+export class ObjectCodec<S extends Schema> extends Codec<InferSchema<S>> {
+  constructor(public readonly shape: S) {
+    const defaultObj = Object.entries(shape).reduce((acc, [key, codec]) => {
+      acc[key as keyof InferSchema<S>] = codec.defaultValue;
+      return acc;
+    }, {} as InferSchema<S>);
+
+    super(defaultObj);
+  }
+
+  encode(value: InferSchema<S>): string {
+    return JSON.stringify(value);
+  }
+
+  decode(value: string | null | undefined): InferSchema<S> {
+    try {
+      if (!value) return this.defaultValue;
+      return JSON.parse(value);
+    } catch {
+      return this.defaultValue;
+    }
   }
 }
