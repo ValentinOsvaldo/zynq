@@ -14,9 +14,6 @@ importers:
 
   examples/vue:
     dependencies:
-      '@zynq/core':
-        specifier: workspace:*
-        version: link:../../packages/core
       '@zynq/vue':
         specifier: workspace:*
         version: link:../../packages/vue
