@@ -10,4 +10,5 @@ export default defineConfig({
   external: ['vue', 'vue-router'],
   treeshake: true,
   splitting: false,
+  noExternal: ['@zynq/core'],
 });
