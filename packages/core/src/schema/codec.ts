@@ -35,7 +35,7 @@ export class BooleanCodec extends Codec<boolean> {
   }
 
   decode(value: string | null | undefined): boolean {
-    return Boolean(value) ?? this.defaultValue;
+    return Boolean(value);
   }
 }
 
